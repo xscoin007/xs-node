@@ -1,0 +1,2 @@
+obj/stun.o: stun.cpp ministun.h
+stun.cpp ministun.h :

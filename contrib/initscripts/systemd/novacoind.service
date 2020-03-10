@@ -1,0 +1,11 @@
+[Unit]
+Description=XSCOIN daemon serivce
+After=network.target
+
+[Service]
+Type=simple
+User=XSCOIN
+ExecStart=/opt/XSCOIN/XSCOINd
+
+[Install]
+WantedBy=multi-user.target

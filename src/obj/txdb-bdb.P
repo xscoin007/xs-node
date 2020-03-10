@@ -1,0 +1,14 @@
+obj/txdb-bdb.o: txdb-bdb.cpp db.h main.h timestamps.h bignum.h util.h \
+ uint256.h netbase.h serialize.h allocators.h version.h clientversion.h \
+ compat.h sync.h net.h mruset.h protocol.h addrman.h hash.h script.h \
+ keystore.h crypter.h key.h scrypt.h hashblock.h sph_blake.h sph_types.h \
+ sph_bmw.h sph_groestl.h sph_jh.h sph_keccak.h sph_skein.h sph_luffa.h \
+ sph_cubehash.h sph_shavite.h sph_simd.h sph_echo.h kernel.h wallet.h \
+ ui_interface.h walletdb.h checkpoints.h txdb-bdb.h
+txdb-bdb.cpp db.h main.h timestamps.h bignum.h util.h :
+ uint256.h netbase.h serialize.h allocators.h version.h clientversion.h :
+ compat.h sync.h net.h mruset.h protocol.h addrman.h hash.h script.h :
+ keystore.h crypter.h key.h scrypt.h hashblock.h sph_blake.h sph_types.h :
+ sph_bmw.h sph_groestl.h sph_jh.h sph_keccak.h sph_skein.h sph_luffa.h :
+ sph_cubehash.h sph_shavite.h sph_simd.h sph_echo.h kernel.h wallet.h :
+ ui_interface.h walletdb.h checkpoints.h txdb-bdb.h :

@@ -1,0 +1,5 @@
+XSCOIN-qt usr/bin
+share/pixmaps/XSCOIN32.xpm usr/share/pixmaps
+share/pixmaps/XSCOIN80.xpm usr/share/pixmaps
+debian/XSCOIN-qt.desktop usr/share/applications
+debian/XSCOIN-qt.protocol usr/share/kde4/services/

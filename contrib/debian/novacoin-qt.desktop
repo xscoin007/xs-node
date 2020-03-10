@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=XSCOIN
+Comment=XSCOIN P2P Cryptocurrency
+Comment[ru]=XSCOIN, P2P криптовалюта
+Comment[fr]=XSCOIN, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=XSCOIN, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/XSCOIN-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/XSCOIN80.xpm
+MimeType=x-scheme-handler/XSCOIN;
+Categories=Office;

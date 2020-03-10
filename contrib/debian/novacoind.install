@@ -1,0 +1,2 @@
+debian/bin/XSCOINd usr/bin
+src/XSCOINd usr/lib/XSCOIN

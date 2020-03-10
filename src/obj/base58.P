@@ -1,0 +1,6 @@
+obj/base58.o: base58.cpp bignum.h util.h uint256.h netbase.h serialize.h \
+ allocators.h version.h clientversion.h compat.h key.h hash.h script.h \
+ keystore.h crypter.h sync.h base58.h
+base58.cpp bignum.h util.h uint256.h netbase.h serialize.h :
+ allocators.h version.h clientversion.h compat.h key.h hash.h script.h :
+ keystore.h crypter.h sync.h base58.h :

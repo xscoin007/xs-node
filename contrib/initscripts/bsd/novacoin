@@ -1,0 +1,68 @@
+#!/bin/sh
+
+# PROVIDE: XSCOIN
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# XSCOIN_enable (bool): Set to NO by default. Set this variable to YES if you want to enable XSCOIN service.
+# XSCOIN_config (path): Set to /usr/local/etc/XSCOIN.conf by default.
+# XSCOIN_user:  The user account XSCOIN daemon runs as. It uses 'root' user by default.
+# XSCOIN_group: The group account XSCOIN daemon runs as. It uses 'wheel' group by default.
+# XSCOIN_datadir (str): Default to "/var/db/XSCOIN". Base data directory.
+
+. /etc/rc.subr
+
+name=XSCOIN
+rcvar=XSCOIN_enable
+
+: ${XSCOIN_enable:=NO}
+: ${XSCOIN_config=/usr/local/etc/XSCOIN.conf}
+: ${XSCOIN_datadir=/var/db/XSCOIN}
+: ${XSCOIN_user="root"}
+: ${XSCOIN_group="wheel"}
+
+required_files=${XSCOIN_config}
+command=/usr/local/bin/XSCOINd
+XSCOIN_chdir=${XSCOIN_datadir}
+pidfile="${XSCOIN_datadir}/XSCOINd.pid"
+stop_cmd=XSCOIN_stop
+command_args="-conf=${XSCOIN_config} -datadir=${XSCOIN_datadir} -daemon -pid=${pidfile}"
+start_precmd="${name}_prestart"
+
+XSCOIN_create_datadir()
+{
+	echo "Creating data directory"
+	eval mkdir -p ${XSCOIN_datadir}
+	[ $? -eq 0 ] && chown -R ${XSCOIN_user}:${XSCOIN_group} ${XSCOIN_datadir}
+}
+
+XSCOIN_prestart()
+{
+	if [ ! -d "${XSCOIN_datadir}/." ]; then
+		XSCOIN_create_datadir || return 1
+	fi
+}
+
+XSCOIN_requirepidfile()
+{
+	if [ ! "0`check_pidfile ${pidfile} ${command}`" -gt 1 ]; then
+		echo "${name} not running? (check $pidfile)."
+		exit 1
+	fi
+}
+
+XSCOIN_stop()
+{
+    XSCOIN_requirepidfile
+
+	echo "Stopping ${name}."
+	eval ${command} -conf=${XSCOIN_config} -datadir=${XSCOIN_datadir} stop
+	wait_for_pids ${rc_pid}
+}
+
+load_rc_config $name
+run_rc_command "$1"
